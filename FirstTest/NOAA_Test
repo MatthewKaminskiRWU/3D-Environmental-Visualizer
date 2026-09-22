@@ -1,0 +1,55 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Sep 19 16:02:32 2026
+
+@author: Matthew
+"""
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+
+
+
+
+# Load the CSV file
+# "df" means DataFrame. So it is making a table stored in the variable.
+# "pd" is short for panda.read. So ti is just using Panda to read the CSV.
+df = pd.read_csv("NOAA Project Test 2 - Sheet1.csv")
+
+
+
+# Finds the smallest and largest longitude in the data
+lon_min = df['Longitude'].min()
+lon_max = df['Longitude'].max()
+
+# Finds the smallest and largest latitude in the data
+lat_min = df['Latitude'].min()
+lat_max = df['Latitude'].max()
+
+# Finds the smallest and largest depth in the data
+depth_min = df['Depth'].min()
+depth_max = df['Depth'].max()
+
+
+
+# Creates the 3D figures
+fig = plt.figure()
+# Ax means Axes. 
+ax = fig.add_subplot(111, projection='3d')
+
+# "Scatter" just means to put a point at those coordinates
+# X goes left to right, Y goes backwards and forwards, Z goes up and down
+ax.scatter(df['Longitude'], df['Latitude'], df['Depth'], c=df['Temperature'])
+
+# 2. Set the 3D box limits automatically based on the CSV values
+ax.set_xlim(df['Longitude'].min(), df['Longitude'].max())
+ax.set_ylim(df['Latitude'].min(),  df['Latitude'].max())
+
+# For depth: deepest value (most negative) is bottom, surface (0) is top
+ax.set_zlim(df['Depth'].min(), df['Depth'].max())
+
+
+plt.show()
