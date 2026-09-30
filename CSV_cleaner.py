@@ -9,13 +9,6 @@ import csv
 start = input("Is base path set? (Y/N) ")
 
 
-"""
-file = "gins_decav_t16mn01.csv"
-user= "lauri"
-main = "Final"
-folder = "NOAA_data"
-"""
-
 #window method
 def Windows (t,x,y,z):
     f = t
